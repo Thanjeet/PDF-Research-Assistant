@@ -92,26 +92,26 @@ MIT License. See [LICENSE](LICENSE) for details.
                            │
         ┌──────────────────┴──────────────────┐
         │                                     │
-┌───────────────┐                    ┌────────────────┐
-│ loader.py     │                    │ embeddings.py  │
-│ - pdf_to_chunks│◀── chunks ───────│ - build_embeddings │
-│ - uses fitz    │                    │ - FAISS index     │
-└───────────────┘                    │ - get_retriever  │
-                                     └───────────────┘
-                                            │
-                                            ▼
-                                     ┌───────────────┐
-                                     │ qa_engine.py  │
-                                     │ - ask_question│
-                                     │ - uses retriever
-                                     └───────────────┘
-                                            │
-                                            ▼
-                                     ┌───────────────┐
-                                     │ utils.py      │
-                                     │ - chunk_text  │
-                                     │ - preprocessing
-                                     └───────────────┘
+    ┌───────────────┐                    ┌────────────────┐
+    │ loader.py     │                    │ embeddings.py  │
+    │ - pdf_to_chunks│◀── chunks ───────│ - build_embeddings │
+    │ - uses fitz    │                   │ - FAISS index     │
+    └───────────────┘                    │ - get_retriever  │
+                                         └───────────────┘
+                                                │
+                                                ▼
+                                         ┌───────────────┐
+                                         │ qa_engine.py  │
+                                         │ - ask_question│
+                                         │ - uses retriever
+                                         └───────────────┘
+                                                │
+                                                ▼
+                                         ┌───────────────┐
+                                         │ utils.py      │
+                                         │ - chunk_text  │
+                                         │ - preprocessing
+                                         └───────────────┘
 
 ## Explanation
 
