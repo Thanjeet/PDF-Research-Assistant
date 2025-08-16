@@ -1,14 +1,14 @@
-def chunk_text(text, chunk_size=500, overlap=50):
+# src/utils.py
+def chunk_text(text, chunk_size=500, chunk_overlap=50):
     """
-    Splits long text into smaller overlapping chunks.
-    Useful for embeddings and retrieval.
+    Split text into overlapping chunks
     """
-    words = text.split()
     chunks = []
     start = 0
-    while start < len(words):
+    text_length = len(text)
+    while start < text_length:
         end = start + chunk_size
-        chunk = " ".join(words[start:end])
+        chunk = text[start:end]
         chunks.append(chunk)
-        start += chunk_size - overlap
+        start += chunk_size - chunk_overlap
     return chunks
