@@ -30,5 +30,15 @@ pip install -r requirements.txt
 ```bash
 streamlit run app.py
 ```
+## 🛠 Tech Stack
+- Python 
+- Streamlit for UI
+- LangChain + FAISS for retrieval
+- Sentence-Transformers for embeddings
+- Hugging Face Transformers for Q&A
 
 
+## 📈 Future Improvements
+- Support for multiple PDFs
+- Summarization mode
+- Deploy on Hugging Face Spaces
