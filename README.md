@@ -19,4 +19,16 @@ It uses **embeddings + retrieval-based QA** to give accurate answers from the do
 ```bash
 git clone https://github.com/thanjeet/pdf-research-assistant.git
 cd pdf-research-assistant
+```
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the app
+```bash
+streamlit run app.py
+```
+
 
