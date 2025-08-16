@@ -1,13 +1,15 @@
-import PyPDF2
+# src/loader.py
+import fitz  # PyMuPDF
 from src.utils import chunk_text
 
-def load_pdf(file):
-    """Extracts text from a PDF file and splits it into chunks."""
-    pdf_reader = PyPDF2.PdfReader(file)
+def pdf_to_chunks(file, chunk_size=500, chunk_overlap=50):
+    """
+    Extract text from PDF and split into chunks
+    """
+    doc = fitz.open(stream=file.read(), filetype="pdf")
     text = ""
-    for page in pdf_reader.pages:
-        text += page.extract_text() or ""
-    
-    # Split into chunks for embeddings
-    docs = chunk_text(text, chunk_size=500, overlap=50)
-    return docs
+    for page in doc:
+        text += page.get_text()
+    doc.close()
+    chunks = chunk_text(text, chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+    return chunks

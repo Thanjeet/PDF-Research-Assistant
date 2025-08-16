@@ -1,0 +1,18 @@
+# config.yaml
+
+# PDF chunking
+chunk_size: 500
+chunk_overlap: 50
+
+# Retrieval
+top_k: 5
+
+# Models
+models:
+  - name: "MiniLM (local embeddings + DistilBART)"
+    embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+    qa_model: "sshleifer/distilbart-cnn-12-6"
+
+  - name: "BGE (local embeddings) + Gemma (via Ollama)"
+    embedding_model: "BAAI/bge-small-en"
+    qa_model: "gemma:2b"   # runs locally via Ollama
