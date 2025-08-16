@@ -82,4 +82,55 @@ PDF-Research-Assistant/
 
 MIT License. See [LICENSE](LICENSE) for details.
 
+---
+                     ┌─────────────────┐
+                     │  app.py (UI)    │
+                     │ - Streamlit UI  │
+                     │ - Model select  │
+                     │ - Chatbox       │
+                     └─────┬───────────┘
+                           │
+        ┌──────────────────┴──────────────────┐
+        │                                     │
+┌───────────────┐                    ┌────────────────┐
+│ loader.py     │                    │ embeddings.py  │
+│ - pdf_to_chunks│◀── chunks ───────│ - build_embeddings │
+│ - uses fitz    │                    │ - FAISS index     │
+└───────────────┘                    │ - get_retriever  │
+                                     └───────────────┘
+                                            │
+                                            ▼
+                                     ┌───────────────┐
+                                     │ qa_engine.py  │
+                                     │ - ask_question│
+                                     │ - uses retriever
+                                     └───────────────┘
+                                            │
+                                            ▼
+                                     ┌───────────────┐
+                                     │ utils.py      │
+                                     │ - chunk_text  │
+                                     │ - preprocessing
+                                     └───────────────┘
 
+## Explanation
+
+#### app.py
+- Handles the Streamlit interface: uploading PDFs, selecting model, chat UI.
+- Stores chat_history and retriever in session state.
+
+#### loader.py
+- Loads PDFs via PyMuPDF (fitz).
+- Converts PDF text into chunks for embeddings.
+
+#### embeddings.py
+- Generates embeddings for text chunks using Sentence Transformers.
+- Creates FAISS index for efficient similarity search.
+- Provides get_retriever() to fetch top-k relevant chunks.
+
+#### qa_engine.py
+- Accepts a query and calls the retriever.
+  Sends retrieved chunks to the selected model (Flan-T5 or Mistral) for answer generation.
+
+#### utils.py
+- Handles helper functions like text chunking, preprocessing, etc.
