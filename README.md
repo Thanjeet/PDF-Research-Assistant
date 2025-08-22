@@ -46,7 +46,7 @@ streamlit run app.py
 ---
 
 ## 📂 File Structure
-
+```bash
 PDF-Research-Assistant/
 │
 ├─ app.py # Main Streamlit app
@@ -58,7 +58,7 @@ PDF-Research-Assistant/
 │ └─ utils.py # Helper functions
 ├─ config.yaml
 └─ README.md
-
+```
 ---
 
 
